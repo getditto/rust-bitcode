@@ -32,7 +32,7 @@ installation script:
 ```
 
 This will:
-1. Install the toolchain in `~/.rust-ios-arm64/toolchain`
+1. Install the toolchain in `~/.rust-ios-arm64/toolchain-YYYY-MM-DD`
 2. Configure `rustup` with a custom toolchain under the name `ios-arm64`.
 
 You can also install and add the toolchain yourself if you don't like these
@@ -48,8 +48,8 @@ defaults.
    repositories under `build/` and compile them. The toolchain will end up
    at `build/rust-build/build/x86_64-apple-darwin/stage2`.
 5. Run `./install.sh`. This will install the toolchain in
-   `~/.rust-ios-arm64/toolchain` and add it to rustup, the same as for
-   pre-compiled releases.
+   `~/.rust-ios-arm64/toolchain-YYYY-MM-DD` and add it to rustup, the same as
+   for pre-compiled releases.
 
 ## Using the toolchain
 
