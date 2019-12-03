@@ -1,3 +1,27 @@
+This repository contains the build scripts that FullStory uses for building
+the rust portions of native mobile.
+
+The primary changes that we make are:
+* Use LLVM 8 instead of LLVM 7 (XCode 11 uses LLVM 8)
+* Include more architectures so we can use the same toolchain for both bitcode
+  and non-bitcode purposes.
+
+## Extra dependency steps
+
+In order to build the android variants of the toolchain, the rust builder script needs
+access to the clang compiler used by android. If you install Android Studio, then it
+will install the appropriate toolchains, but with slightly different names, so I executed
+the following commands from within the `toolchains/llvm/prebuilt/darwin-x86_64/bin` found
+inside the NDK directory (which at the time was found at `${HOME}/Library/Android/sdk/ndk/20.0.5594570`)
+```
+ln -s aarch64-linux-android28-clang aarch64-linux-android-clang
+ln -s armv7a-linux-androideabi28-clang arm-linux-androideabi-clang
+ln -s i686-linux-android28-clang i686-linux-android-clang
+ln -s x86_64-linux-android28-clang x86_64-linux-android-clang
+```
+
+Original README.md follows
+
 # Rust toolchain for Xcode-compatible iOS bitcode
 
 In standard releases of Rust, the bitcode in ARM64 iOS targets is often
