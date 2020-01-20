@@ -41,7 +41,7 @@ git checkout "$RUST_COMMIT"
 cd ..
 mkdir -p rust-build
 cd rust-build
-../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios
+../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios --enable-extended --tools=cargo
 export RUSTFLAGS_NOT_BOOTSTRAP=-Zembed-bitcode
 export CFLAGS_aarch64_apple_ios=-fembed-bitcode
 python "$WORKING_DIR/rust/x.py" build
