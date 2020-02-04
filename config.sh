@@ -1,10 +1,11 @@
-# 1. Select the best branch from https://github.com/apple/swift-llvm
+# 1. Select the best branch from https://github.com/apple/llvm-project
 
 # $ xcrun -sdk iphoneos swiftc --version
 # Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
 # Target: x86_64-apple-darwin19.0.0
 
-# There is a branch called "stable" which looks promising
+# There is a branch called "apple/stable/20190619" which is equivalent to the "stable"
+# Branch under https://github.com/apple/swift-llvm under which looks promising.
 # At this time (running Xcode 11.3) it's a couple of months newer than the 5.1 branch
 LLVM_BRANCH="apple/stable/20190619"
 
