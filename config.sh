@@ -6,7 +6,7 @@
 
 # There is a branch called "stable" which looks promising
 # At this time (running Xcode 11.3) it's a couple of months newer than the 5.1 branch
-SWIFT_BRANCH="stable"
+LLVM_BRANCH="apple/stable/20190619"
 
 # 2. Pick/install a working Rust nightly (ideally one where RLS and clippy built)
 # 3. Note its date

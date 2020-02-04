@@ -15,18 +15,18 @@ if ! which cmake; then
 fi
 
 cd "$WORKING_DIR"
-if [ ! -d "$WORKING_DIR/swift-llvm" ]; then
-    git clone https://github.com/apple/swift-llvm.git -b "$SWIFT_BRANCH"
+if [ ! -d "$WORKING_DIR/llvm-project" ]; then
+    git clone https://github.com/apple/llvm-project.git -b "$LLVM_BRANCH"
 fi
-cd "$WORKING_DIR/swift-llvm"
+cd "$WORKING_DIR/llvm-project"
 git reset --hard
 git clean -f
-git checkout "origin/$SWIFT_BRANCH"
+git checkout "origin/$LLVM_BRANCH"
 cd ..
 
 mkdir -p llvm-build
 cd llvm-build
-cmake "$WORKING_DIR/swift-llvm" -DCMAKE_INSTALL_PREFIX="$WORKING_DIR/llvm-root" -DCMAKE_BUILD_TYPE=Release -DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -G Ninja
+cmake "$WORKING_DIR/llvm-project/llvm" -DCMAKE_INSTALL_PREFIX="$WORKING_DIR/llvm-root" -DCMAKE_BUILD_TYPE=Release -DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -G Ninja
 ninja
 ninja install
 
