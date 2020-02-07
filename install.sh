@@ -3,7 +3,7 @@ set -euxo
 source config.sh
 
 WORKING_DIR="$(pwd)/build"
-DEST_TOOLCHAIN="$HOME/.rust-ios-arm64/toolchain-$RUST_NIGHTLY"
+DEST_TOOLCHAIN="$HOME/.rust-ios-arm64/toolchain-$RUST_TOOLCHAIN"
 
 mkdir -p "$DEST_TOOLCHAIN"
 cp -r "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2"/* "$DEST_TOOLCHAIN"

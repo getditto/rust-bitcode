@@ -16,12 +16,12 @@ fi
 
 cd "$WORKING_DIR"
 if [ ! -d "$WORKING_DIR/llvm-project" ]; then
-    git clone https://github.com/apple/llvm-project.git -b "$LLVM_BRANCH"
+    git clone https://github.com/apple/llvm-project.git
 fi
 cd "$WORKING_DIR/llvm-project"
 git reset --hard
 git clean -f
-git checkout "origin/$LLVM_BRANCH"
+git checkout "$LLVM_BRANCH"
 cd ..
 
 mkdir -p llvm-build
@@ -37,7 +37,7 @@ fi
 cd rust
 git reset --hard
 git clean -f
-git checkout "$RUST_COMMIT"
+git checkout "$RUST_BRANCH"
 cd ..
 mkdir -p rust-build
 cd rust-build
