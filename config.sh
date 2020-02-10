@@ -16,3 +16,4 @@ RUST_BRANCH="tags/1.40.0"
 # under $HOME/.rust-ios-arm64/toolchain-$RUST_TOOLCHAIN
 
 RUST_TOOLCHAIN="1.40.0"
+
