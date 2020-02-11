@@ -38,6 +38,7 @@ cd rust
 git reset --hard
 git clean -f
 git checkout "$RUST_BRANCH"
+git apply ../../patches/rust_embed_cmdline.diff
 cd ..
 mkdir -p rust-build
 cd rust-build

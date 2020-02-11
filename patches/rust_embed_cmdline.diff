@@ -1,0 +1,15 @@
+diff --git a/src/librustc_codegen_llvm/back/write.rs b/src/librustc_codegen_llvm/back/write.rs
+index 52f3a1cbb5c..6014a1d8ade 100644
+--- a/src/librustc_codegen_llvm/back/write.rs
++++ b/src/librustc_codegen_llvm/back/write.rs
+@@ -686,7 +686,9 @@ unsafe fn embed_bitcode(cgcx: &CodegenContext<LlvmCodegenBackend>,
+     llvm::LLVMRustSetLinkage(llglobal, llvm::Linkage::PrivateLinkage);
+     llvm::LLVMSetGlobalConstant(llglobal, llvm::True);
+ 
+-    let llconst = common::bytes_in_context(llcx, &[]);
++    let args = "-triple\0arm64-apple-ios11.0.0\0-emit-obj\0\
++        -disable-llvm-passes\0-target-abi\0darwinpcs\0-Os\0";
++    let llconst = common::bytes_in_context(llcx, args.as_bytes());
+     let llglobal = llvm::LLVMAddGlobal(
+         llmod,
+         common::val_ty(llconst),
