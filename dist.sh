@@ -9,6 +9,7 @@ TOOLCHAIN_DEST="${DEST}/toolchain-${RUST_TOOLCHAIN}"
 rm -rf "$TOOLCHAIN_DEST"
 mkdir -p "$TOOLCHAIN_DEST"
 cp -r "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2"/* "$TOOLCHAIN_DEST"
+cp -r "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2-tools/x86_64-apple-darwin/release/cargo" "$TOOLCHAIN_DEST/bin"
 
 cp LICENSE* README.md "$DEST"
 
