@@ -2,9 +2,12 @@
 set -euxo
 source config.sh
 
-WORKING_DIR="$(pwd)/build"
-mkdir -p "$WORKING_DIR"
-
+export OPENSSL_STATIC=1
+export OPENSSL_DIR=/usr/local/opt/openssl
+if [ ! -d "$OPENSSL_DIR" ]; then
+    echo "OpenSSL not found at expected location. Try: brew install openssl"
+    exit 1
+fi
 if ! which ninja; then
     echo "ninja not found. Try: brew install ninja"
     exit 1
@@ -13,6 +16,9 @@ if ! which cmake; then
     echo "cmake not found. Try: brew install cmake"
     exit 1
 fi
+
+WORKING_DIR="$(pwd)/build"
+mkdir -p "$WORKING_DIR"
 
 cd "$WORKING_DIR"
 if [ ! -d "$WORKING_DIR/llvm-project" ]; then
