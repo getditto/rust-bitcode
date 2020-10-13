@@ -28,6 +28,7 @@ cd "$WORKING_DIR/llvm-project"
 git reset --hard
 git clean -f
 git checkout "$LLVM_BRANCH"
+git apply ../../patches/llvm-system-libs.patch
 cd ..
 
 mkdir -p llvm-build
@@ -44,11 +45,9 @@ cd rust
 git reset --hard
 git clean -f
 git checkout "$RUST_BRANCH"
-git apply ../../patches/rust_embed_cmdline.diff
 cd ..
 mkdir -p rust-build
 cd rust-build
-../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios --enable-extended --tools=cargo
-export RUSTFLAGS_NOT_BOOTSTRAP=-Zembed-bitcode
+../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios --enable-extended --tools=cargo --release-channel=stable
 export CFLAGS_aarch64_apple_ios=-fembed-bitcode
 python "$WORKING_DIR/rust/x.py" build

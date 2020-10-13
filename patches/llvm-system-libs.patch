@@ -1,0 +1,40 @@
+diff --git a/llvm/tools/llvm-config/llvm-config.cpp b/llvm/tools/llvm-config/llvm-config.cpp
+index 6c31df3e173b..69aaaf6ca78e 100644
+--- a/llvm/tools/llvm-config/llvm-config.cpp
++++ b/llvm/tools/llvm-config/llvm-config.cpp
+@@ -707,7 +707,34 @@ int main(int argc, char **argv) {
+       // Output system libraries only if linking against a static
+       // library (since the shared library links to all system libs
+       // already)
+-      OS << (LinkMode == LinkModeStatic ? LLVM_SYSTEM_LIBS : "") << '\n';
++
++      // ========== BEGIN HACK ==========
++
++      // There is a bug where "llvm-config --system-libs" will output long absolute paths.
++      // This ends up with rust's cc doing bad things like "-llibz.tbd" or "-llibxml2.dylib".
++      // Some attempts have been made to patch this but none of them have actually landed
++      // in either LLVM 10 (which Apple is currently using) nor in LLVM 11.
++      //
++      // References:
++      // https://discourse.brew.sh/t/llvm-config-10-0-1-advertise-libxml2-tbd-as-system-libs/8593/4
++      // https://reviews.llvm.org/D86134
++      // https://reviews.llvm.org/D87590
++      //
++      // It appears that the right way to fix this involves LLVM's CMakeLists.txt where
++      // these system libraries are calculated. Unfortunately I can't work out how to apply
++      // the proposed fixes to apple's fork of LLVM as the CMake stuff is all a bit different.
++      //
++      // Rather than spend all week understanding LLVM's build system, I'm going to make the
++      // bold assumption that everybody who's building this bitcode toolchain is running on
++      // basically similar Macs, so if I just hardcode the right list of libraries here then
++      // we'll all be okay.
++      //
++      // This can be removed when the appropriate upstream fix reaches Xcode's LLVM.
++
++      //OS << (LinkMode == LinkModeStatic ? LLVM_SYSTEM_LIBS : "") << '\n';
++      OS << (LinkMode == LinkModeStatic ? "-lz -lcurses -lm -lxml2" : "") << '\n';
++
++      // ========== END HACK ==========
+     }
+   } else if (!Components.empty()) {
+     WithColor::error(errs(), "llvm-config")
