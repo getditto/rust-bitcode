@@ -5,7 +5,7 @@ source config.sh
 # The built toolchain that we are going to package
 WORKING_DIR="$(pwd)/build"
 
-# The directory which will added to the final zip file
+# The directory which will be added to the final zip file
 DEST="$(pwd)/dist/rust-${RUST_TOOLCHAIN}"
 
 # The actual toolchain inside that, which will be installed to ~/.rustup/...
