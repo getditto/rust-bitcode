@@ -21,8 +21,7 @@ create an issue if you notice any problems.
 
 Visit the [releases page](https://github.com/getditto/rust-bitcode/releases) and
 download a zip file. It will have a name of the form
-`rust-ios-arm64-20xx-xx-xx.zip` where the date is the Rust nightly that it is
-based on.
+`rust-ios-arm64-xxx.zip`.
 
 Unzip the file and open a terminal to the extracted directory. Run the
 installation script:
@@ -31,12 +30,7 @@ installation script:
 ./install.sh
 ```
 
-This will:
-1. Install the toolchain in `~/.rust-ios-arm64/toolchain-YYYY-MM-DD`
-2. Configure `rustup` with a custom toolchain under the name `ios-arm64`.
-
-You can also install and add the toolchain yourself if you don't like these
-defaults.
+This will install the toolchain in `~/.rustup/toolchains/ios-arm64-xxx`.
 
 ## Build from source
 
@@ -48,15 +42,14 @@ defaults.
    repositories under `build/` and compile them. The toolchain will end up
    at `build/rust-build/build/x86_64-apple-darwin/stage2`.
 5. Run `./install.sh`. This will install the toolchain in
-   `~/.rust-ios-arm64/toolchain-YYYY-MM-DD` and add it to rustup, the same as
-   for pre-compiled releases.
+   `~/.rustup/toolchains/rust-ios-arm64-1.46.0`, making it available in rustup.
 
 ## Using the toolchain
 
 Build your library like this:
 
 ```
-RUSTFLAGS="-Z embed-bitcode" cargo +ios-arm64 build --target aarch64-apple-ios --release --lib
+cargo +ios-arm64-1.46.0 build --target aarch64-apple-ios --release --lib
 ```
 
 ## License
