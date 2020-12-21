@@ -48,6 +48,6 @@ git checkout "$RUST_BRANCH"
 cd ..
 mkdir -p rust-build
 cd rust-build
-../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios --enable-extended --tools=cargo --release-channel=stable
+../rust/configure --llvm-config="$WORKING_DIR/llvm-root/bin/llvm-config" --target=aarch64-apple-ios --enable-extended --tools=cargo --release-channel=1.46.0
 export CFLAGS_aarch64_apple_ios=-fembed-bitcode
 python "$WORKING_DIR/rust/x.py" build
