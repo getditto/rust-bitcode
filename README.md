@@ -17,6 +17,9 @@ This repository is maintained by [Ditto](https://www.ditto.live). We use it
 ourselves and want to share it for the benefit of the Rust iOS community! Please
 create an issue if you notice any problems.
 
+These scripts work for 64-bit iOS only. watchOS and tvOS are
+[not fully supported by Rust yet](https://github.com/rust-lang/rust/issues/48862).
+
 ## Pre-compiled releases
 
 Visit the [releases page](https://github.com/getditto/rust-bitcode/releases) and
