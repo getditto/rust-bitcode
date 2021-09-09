@@ -3,7 +3,7 @@
 # returned by the command below:
 # $ xcrun -sdk iphoneos swiftc --version
 
-LLVM_BRANCH="tags/swift-5.3.2-RELEASE"
+LLVM_BRANCH="swift-5.3.2-RELEASE"
 
 # 2. Select the best branch, tag or commit hash from https://github.com/rust-lang/rust
 
