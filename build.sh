@@ -22,7 +22,7 @@ mkdir -p "$WORKING_DIR"
 
 cd "$WORKING_DIR"
 if [ ! -d "$WORKING_DIR/llvm-project" ]; then
-    git clone https://github.com/apple/llvm-project.git
+    git clone --depth 1 --branch "$LLVM_BRANCH" https://github.com/apple/llvm-project.git
 fi
 cd "$WORKING_DIR/llvm-project"
 git reset --hard
