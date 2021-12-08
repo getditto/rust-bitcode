@@ -5,7 +5,7 @@
 
 set -euxo pipefail
 
-RUST_TOOLCHAIN="nightly-2021-10-05"
+RUST_TOOLCHAIN="1.57.0"
 
 LLVM_BRANCH="swift-5.3.2-RELEASE"
 
