@@ -26,10 +26,12 @@ Visit the [releases page](https://github.com/getditto/rust-bitcode/releases) and
 download a zip file. It will have a name of the form
 `rust-ios-arm64-xxx.zip`.
 
-Unzip the file and open a terminal to the extracted directory. Run the
-installation script:
+Unzip the file and open a terminal to the extracted directory. Remove the
+quarantine flag so the binaries will be trusted, then run the installation
+script:
 
 ```
+xattr -r -d com.apple.quarantine .
 ./install.sh
 ```
 
