@@ -40,10 +40,10 @@ sed 's/^    //' >"$DEST/install.sh"<<EOF
     DEST_TOOLCHAIN="\$HOME/.rustup/toolchains/${RUST_TOOLCHAIN}"
     mkdir -p "\$DEST_TOOLCHAIN"
     cp -r "${RUST_TOOLCHAIN}"/* "\$DEST_TOOLCHAIN"
-    chmod +x "${DEST}/install.sh"
 
     echo "Installed bitcode-enabled Rust toolchain. Use with: +${RUST_TOOLCHAIN}"
 EOF
+chmod +x "${DEST}/install.sh"
 
 (cd dist
     rm -f "rust-${RUST_TOOLCHAIN}.zip"
