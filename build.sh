@@ -3,7 +3,7 @@ set -euxo
 source config.sh
 
 export OPENSSL_STATIC=1
-export OPENSSL_DIR=/usr/local/opt/openssl  # for cimac3: /opt/homebrew/opt/openssl@3
+export OPENSSL_DIR=/usr/local/opt/openssl
 if [ ! -d "$OPENSSL_DIR" ]; then
     echo "OpenSSL not found at expected location. Try: brew install openssl"
     exit 1
