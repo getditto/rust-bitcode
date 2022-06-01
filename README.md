@@ -60,7 +60,7 @@ cargo +ios-arm64-1.60.0 build --target aarch64-apple-ios --release --lib
 ## License
 
 The shell scripts in this repository are made available under the permissive
-Apache 2.0 licence. Refer to the file LICENSE.
+Apache 2.0 licence. Refer to the [LICENSE](LICENSE) file.
 
-Binary releases contain LLVM and Rust. See LICENSE-LLVM and LICENSE-RUST for
+Binary releases contain LLVM and Rust. See [LICENSE-LLVM](LICENSE-LLVM) and [LICENSE-RUST](LICENSE-RUST) for
 their respective licenses. These licenses are included in the binary releases.
