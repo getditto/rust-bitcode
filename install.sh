@@ -1,16 +1,28 @@
 #!/bin/bash
+
 set -euxo
+
 source config.sh
 
 WORKING_DIR="$(pwd)/build"
-DEST_TOOLCHAIN="$HOME/.rustup/toolchains/$RUST_TOOLCHAIN"
+RUST_TARGET_ARCH="$(rustc --print cfg | grep target_arch | awk -F= '{ print $2 }' | tr -d '"')"
 
-# Remove unneeded files from output
-rm -rf "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2/lib/rustlib/src"
+STAGE_DIR="${WORKING_DIR}/rust-build/build/${RUST_TARGET_ARCH}-apple-darwin/stage2"
 
-rm -rf "$DEST_TOOLCHAIN"
-mkdir -p "$DEST_TOOLCHAIN"
-cp -r "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2"/* "$DEST_TOOLCHAIN"
-cp -r "$WORKING_DIR/rust-build/build/x86_64-apple-darwin/stage2-tools/x86_64-apple-darwin/release/cargo" "$DEST_TOOLCHAIN/bin"
+# remove unnecessary files from output
 
-echo "Installed bitcode-enabled Rust toolchain. Use with: +$RUST_TOOLCHAIN"
+rm -rf "${STAGE_DIR}/lib/rustlib/src"
+
+# setup toolchain directory
+
+DEST_TOOLCHAIN="${HOME}/.rustup/toolchains/${RUST_TOOLCHAIN}"
+
+rm -rf "${DEST_TOOLCHAIN}"
+mkdir -p "${DEST_TOOLCHAIN}"
+
+# install artifacts
+
+cp -r "${STAGE_DIR}"/* "${DEST_TOOLCHAIN}"
+cp -r "${STAGE_DIR}-tools/${RUST_TARGET_ARCH}-apple-darwin/release/cargo" "${DEST_TOOLCHAIN}/bin"
+
+echo "Installed bitcode-enabled Rust toolchain. Use with: +${RUST_TOOLCHAIN}"
