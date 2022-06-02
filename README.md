@@ -30,7 +30,7 @@ Unzip the file and open a terminal to the extracted directory. Remove the
 quarantine flag so the binaries will be trusted, then run the installation
 script:
 
-```
+```bash
 xattr -r -d com.apple.quarantine .
 ./install.sh
 ```
@@ -47,20 +47,20 @@ This will install the toolchain in `~/.rustup/toolchains/ios-arm64-xxx`.
    repositories under `build/` and compile them. The toolchain will end up
    at `build/rust-build/build/x86_64-apple-darwin/stage2`.
 5. Run `./install.sh`. This will install the toolchain in
-   `~/.rustup/toolchains/rust-ios-arm64-1.46.0`, making it available in rustup.
+   `~/.rustup/toolchains/ios-arm64-1.60.0`, making it available in rustup.
 
 ## Using the toolchain
 
 Build your library like this:
 
-```
-cargo +ios-arm64-1.46.0 build --target aarch64-apple-ios --release --lib
+```bash
+cargo +ios-arm64-1.60.0 build --target aarch64-apple-ios --release --lib
 ```
 
 ## License
 
 The shell scripts in this repository are made available under the permissive
-Apache 2.0 licence. Refer to the file LICENSE.
+Apache 2.0 licence. Refer to the [LICENSE](LICENSE) file.
 
-Binary releases contain LLVM and Rust. See LICENSE-LLVM and LICENSE-RUST for
+Binary releases contain LLVM and Rust. See [LICENSE-LLVM](LICENSE-LLVM) and [LICENSE-RUST](LICENSE-RUST) for
 their respective licenses. These licenses are included in the binary releases.
