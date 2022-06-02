@@ -40,7 +40,7 @@ This will install the toolchain in `~/.rustup/toolchains/ios-arm64-xxx`.
 ## Build from source
 
 1. Ensure required build tools are installed. If you are using homebrew: `brew
-   install ninja cmake`
+   install ninja cmake openssl`
 2. Clone this repository.
 3. Review `config.sh` to make sure the the Rust and LLVM versions are suitable.
 4. In a terminal, run `./build.sh`. This will clone the Rust and LLVM
