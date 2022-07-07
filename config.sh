@@ -5,7 +5,7 @@
 
 set -euxo pipefail
 
-RUST_TOOLCHAIN="1.60.0"
+RUST_TOOLCHAIN="1.62.0"
 
 # Note(Daniel): the official tagged releases of that llvm fork are currently
 # lagging too much behind the official `llvm`, which makes them incompatible
@@ -16,7 +16,7 @@ RUST_TOOLCHAIN="1.60.0"
 # to find a "sweet spot" in between both. I guess a decent approach could be
 # to start at https://github.com/rust-lang/rust/blob/1.60.0/.gitmodules#L37, and
 # to find a commit in `apple/llvm-project` close to it (ideally containing it)
-LLVM_BRANCH=bda51ce411586a8c012623300d8598ce84fced53
+LLVM_BRANCH=8d3c6736e55960dcd5e5af0e174fb3135114fb40
 
 get_rust_commit_for_toolchain() (
     # Yields "" for a toolchain like `x.y.z`, and `mm-dd-yy` for `nightly-mm-dd-yy`
