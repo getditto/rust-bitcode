@@ -1,3 +1,16 @@
+# Deprecation notice (Sep 2022)
+
+[Apple has deprecated the use of bitcode](https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes).
+
+> Starting with Xcode 14, bitcode is no longer required for watchOS and tvOS applications, and the App Store no longer accepts bitcode submissions from Xcode 14.
+
+We have confirmed that libraries produced by the standard Rust iOS toolchain can be
+included in apps using Xcode 14, which pass App Store validation.
+
+This custom toolchain is **no longer needed** and will not be maintained going forward. 🎉
+
+The old readme is preserved below for future reference.
+
 # Rust toolchain for Xcode-compatible iOS bitcode
 
 In standard releases of Rust, the bitcode in ARM64 iOS targets is often
